@@ -1,0 +1,32 @@
+services:
+  app:
+    build:
+      target: development
+    image: localhost/rede-dor-app:devcontainer
+    entrypoint: []
+    command: ["sleep", "infinity"]
+    working_dir: /workspace/backend
+    volumes:
+      - .:/workspace
+      - maven_cache:/root/.m2
+
+  frontend:
+    profiles: [preview]
+
+  frontend-dev:
+    image: docker.io/library/node:24-alpine
+    working_dir: /workspace/frontend
+    command: ["sh", "-c", "npm ci && npm run dev"]
+    environment:
+      API_PROXY_TARGET: http://app:8080
+    ports:
+      - "127.0.0.1:${FRONTEND_PORT:-5173}:5173"
+    volumes:
+      - .:/workspace
+      - frontend_node_modules:/workspace/frontend/node_modules
+
+volumes:
+  maven_cache:
+    name: rede_dor_maven_cache
+  frontend_node_modules:
+    name: rede_dor_frontend_node_modules

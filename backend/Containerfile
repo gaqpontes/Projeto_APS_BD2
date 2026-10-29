@@ -1,0 +1,15 @@
+FROM docker.io/library/maven:3.9-eclipse-temurin-21 AS development
+WORKDIR /workspace/backend
+COPY pom.xml .
+RUN mvn -B -ntp dependency:go-offline
+COPY src ./src
+
+FROM development AS build
+RUN mvn -B -ntp package
+
+FROM docker.io/library/eclipse-temurin:21-jre AS runtime
+WORKDIR /app
+COPY --from=build /workspace/backend/target/rede-dor-0.0.1-SNAPSHOT.jar /app/app.jar
+USER 10001:10001
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]

@@ -1,0 +1,25 @@
+{
+  "name": "Rede Dor — Java, React e PostgreSQL",
+  "dockerComposeFile": [
+    "../compose.yml",
+    "compose.dev.yml"
+  ],
+  "service": "app",
+  "runServices": [
+    "db",
+    "app",
+    "frontend-dev"
+  ],
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
+  "overrideCommand": false,
+  "remoteUser": "root",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-boot-dev-pack"
+      ]
+    }
+  }
+}

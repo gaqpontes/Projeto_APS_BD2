@@ -1,0 +1,31 @@
+:root {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: #173d37;
+  background: #f5f8f4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { width: min(1040px, 100%); margin: 0 auto; padding: 36px 28px; }
+header { display: flex; align-items: center; gap: 16px; }
+header p, .eyebrow { font-size: 12px; font-weight: 650; letter-spacing: 0.13em; }
+.brand { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: #17675e; color: white; font-weight: 700; }
+.intro { padding: 88px 0 52px; }
+.eyebrow { color: #527b70; }
+h1 { font-size: clamp(36px, 5.8vw, 62px); line-height: 1.12; letter-spacing: -0.045em; margin: 20px 0; font-weight: 650; }
+.description { max-width: 540px; color: #597268; font-size: 19px; line-height: 1.6; }
+.card { background: white; border: 1px solid #dce6dd; border-radius: 20px; padding: 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px; }
+.card h2 { font-size: 19px; margin: 0 0 10px; }
+.card p { color: #61776e; max-width: 520px; line-height: 1.6; margin: 0; }
+.card .status { display: flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 600; white-space: nowrap; color: #365d51; }
+.status span { width: 8px; height: 8px; border-radius: 50%; background: #99a79f; }
+.online span { background: #338653; }
+.offline span { background: #b56e28; }
+footer { margin-top: 70px; color: #75887e; font-size: 12px; }
+@media (max-width: 600px) {
+  main { padding: 24px 20px; }
+  .intro { padding-top: 60px; }
+  .card { padding: 22px; }
+  header p { font-size: 10px; }
+}
